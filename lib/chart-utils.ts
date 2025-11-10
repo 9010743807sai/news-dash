@@ -11,7 +11,7 @@ export function processArticlesForCharts(articles: NewsArticle[]): ChartData {
   // Process source data for pie chart
   const sourceCounts = articles.reduce(
     (acc, article) => {
-      const source = article.source.name
+      const source = article.source?.name ?? "Unknown"
       acc[source] = (acc[source] || 0) + 1
       return acc
     },
@@ -62,7 +62,7 @@ export function processArticlesForCharts(articles: NewsArticle[]): ChartData {
   )
 
   articles.forEach((article) => {
-    const title = article.title.toLowerCase()
+    const title = (article.title || "").toLowerCase()
     const description = (article.description || "").toLowerCase()
     const text = `${title} ${description}`
 
@@ -285,7 +285,7 @@ export function processArticlesForCharts(articles: NewsArticle[]): ChartData {
   ])
 
   const wordCounts = articles
-    .flatMap((article) => [article.title, article.description || ""])
+    .flatMap((article) => [article.title || "", article.description || ""])
     .join(" ")
     .toLowerCase()
     .replace(/[^\w\s]/g, "")
@@ -401,7 +401,7 @@ function analyzeSentiment(articles: NewsArticle[]): Array<{ sentiment: string; c
   const sentimentCounts = { positive: 0, neutral: 0, negative: 0 }
 
   articles.forEach((article) => {
-    const text = `${article.title} ${article.description || ""}`.toLowerCase()
+    const text = `${article.title || ""} ${article.description || ""}`.toLowerCase()
     const words = text.split(/\s+/)
 
     let positiveScore = 0
