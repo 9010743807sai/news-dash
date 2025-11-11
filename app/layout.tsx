@@ -7,6 +7,7 @@ import { AuthProvider } from "@/contexts/auth-context";
 import { PreferencesProvider } from "@/contexts/preferences-context";
 import { Navbar } from "@/components/navbar";
 import GoogleAnalytics from "@/components/google-analytics";
+import SocialFloating from "@/components/social-floating";
 
 export const metadata: Metadata = {
   title: "NewsHub - Personalized News Dashboard",
@@ -55,7 +56,8 @@ html {
             <Navbar />
             <GoogleAnalytics />
             <div dangerouslySetInnerHTML={{ __html: CHATBOT_HTML }} />
-            <main className="min-h-screen bg-background">{children}</main>
+            <SocialFloating />
+              <main className="min-h-screen bg-background">{children}</main>
           </PreferencesProvider>
         </AuthProvider>
       </body>
