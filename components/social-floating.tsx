@@ -1,5 +1,3 @@
-"use client"
-
 import React from "react"
 
 type SocialItem = { href: string; label: string; svg: React.ReactNode }
