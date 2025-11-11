@@ -54,7 +54,8 @@ const socials: SocialItem[] = [
 
 export default function SocialFloating() {
   return (
-    <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-3">
+    // Test mode: always visible and high z-index so we can confirm visibility on deployed site
+    <div className="fixed left-4 top-1/2 transform -translate-y-1/2 z-[9999] flex flex-col items-center gap-3 border-2 border-accent bg-white/80 p-1">
       {socials.map((s) => (
         <a
           key={s.href}
